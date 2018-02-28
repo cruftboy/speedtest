@@ -36,7 +36,7 @@ def update(day,time):
 
 	numVals = dj['{0}:{1}'.format(time[0],time[1])]['number of values']
 
-	avespeed = (speed + (dj['{0}:{1}'.format(time[0],time[1])]['avespeed']*numVals))/numVals + 1
+	avespeed = (speed + (dj['{0}:{1}'.format(time[0],time[1])]['avespeed']*numVals))/(numVals + 1)
 
 	numVals += 1
 
