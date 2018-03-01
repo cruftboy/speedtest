@@ -32,7 +32,7 @@ def update(day,time):
 	dj = json.load(d)
 
 	if dj.get('{0}:{1}'.format(time[0],time[1])) == None:
-		dj['{0}:{1}'.format(time[0],time[1])] = {'avespeed': 0,'number of values': 0}
+		dj['{0}:{1}'.format(time[0],time[1])] = {'avespeed': 0,'number of values': 0,'last speed': 0}
 
 	numVals = dj['{0}:{1}'.format(time[0],time[1])]['number of values']
 
@@ -40,7 +40,7 @@ def update(day,time):
 
 	numVals += 1
 
-	dj['{0}:{1}'.format(time[0],time[1])] = {'avespeed': avespeed,'number of values': numVals}
+	dj['{0}:{1}'.format(time[0],time[1])] = {'avespeed': avespeed,'number of values': numVals,'last speed': speed}
 
 
 	d.seek(0)
@@ -64,7 +64,7 @@ while 1 == 1:
 
 	#Check time
 	if time[0] >= 8:
-		if time[0] <= 16:
+		if time[0] < 16:
 			if day <= 5:
 				if time[1] % 5 == 0:
 					if time[2] < 1:
